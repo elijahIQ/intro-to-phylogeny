@@ -1,3 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-9286491122603741">
+<title>Database Try-Out Questions</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+    }
+    header {
+        background: #003366;
+        padding: 15px;
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    #timer {
+        background: #222;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        font-size: 20px;
+    }
+    .container {
+        width: 95%;
+        max-width: 900px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ccc;
+    }
+    .question-box {
+        padding: 15px;
+        background: #eef3fa;
+        border-left: 5px solid #003366;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    button {
+        padding: 12px 20px;
+        background: #003366;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #0055aa;
+    }
+    #submitBtn {
+        width: 100%;
+        margin-top: 25px;
+        background: #008800;
+    }
+    #result {
+        display: none;
+        padding: 20px;
+        background: #d8ffd8;
+        border-left: 5px solid #009933;
+        border-radius: 8px;
+        margin-top: 20px;
+        font-size: 20px;
+    }
+    .correct-answer {
+        color: green;
+        font-weight: bold;
+    }
+    .incorrect-answer {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<header>Database Try-Out Questions</header>
+<div id="timer">Time Left: <span id="time">60:00</span></div>
+
+<div class="container">
+
+    <div id="questionContainer"></div>
+
+    <div class="nav-buttons">
+        <button onclick="prevQuestion()">Previous</button>
+        <button onclick="nextQuestion()">Next</button>
+    </div>
+
+    <button id="submitBtn" onclick="submitQuiz()">Submit Answers</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+//new
+
 
 let questions =[
   {
@@ -31,6 +142,176 @@ let questions =[
     "a": 0
   },
   {
+    "q": "What is the result of genetic isolation between populations?",
+    "o": [
+      "Speciation",
+      "Extinction",
+      "Adaptation",
+      "Evolution"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the term for the development of similar structures in different species that live in the same environment?",
+    "o": [
+      "Convergent evolution",
+      "Divergent evolution",
+      "Parallel evolution",
+      "Homologous evolution"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the process of developing two or more species from a common ancestor?",
+    "o": [
+      "Convergent evolution",
+      "Divergent evolution",
+      "Parallel evolution",
+      "Homologous evolution"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the term for a character state that is shared between two DNA sequences or taxa because they inherited it from a common ancestor?",
+    "o": [
+      "Homology",
+      "Homoplasy",
+      "Analogy",
+      "Synapomorphy"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the term for the existence of shared characters that are not a result of common ancestry, but of independent evolution of similar characters?",
+    "o": [
+      "Homology",
+      "Homoplasy",
+      "Analogy",
+      "Synapomorphy"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the result of convergent evolution?",
+    "o": [
+      "Similar structures in different lineages",
+      "Different structures in similar lineages",
+      "Shared characters between species",
+      "Independent evolution of similar characters"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the term for the original shared trait in a group of organisms?",
+    "o": [
+      "Ancestral trait",
+      "Derived trait",
+      "Homologous trait",
+      "Analogous trait"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the term for the trait found in a newly evolved organism?",
+    "o": [
+      "Ancestral trait",
+      "Derived trait",
+      "Homologous trait",
+      "Analogous trait"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the process of migration of a few individuals to a new, isolated region?",
+    "o": [
+      "Founder event",
+      "Vicariance",
+      "Speciation",
+      "Adaptation"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the process of breaking up of a formerly contiguous range due to geological or climatic events?",
+    "o": [
+      "Founder event",
+      "Vicariance",
+      "Speciation",
+      "Adaptation"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the result of reproductive isolation between populations?",
+    "o": [
+      "Speciation",
+      "Extinction",
+      "Adaptation",
+      "Evolution"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the term for the development of similar structures in different species that live in different environments?",
+    "o": [
+      "Convergent evolution",
+      "Divergent evolution",
+      "Parallel evolution",
+      "Homologous evolution"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the process of evolution that results in the development of different structures in similar lineages?",
+    "o": [
+      "Convergent evolution",
+      "Divergent evolution",
+      "Parallel evolution",
+      "Homologous evolution"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the term for the shared characters between species that are inherited from a common ancestor?",
+    "o": [
+      "Homology",
+      "Homoplasy",
+      "Analogy",
+      "Synapomorphy"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the term for the independent evolution of similar characters in different lineages?",
+    "o": [
+      "Convergent evolution",
+      "Divergent evolution",
+      "Parallel evolution",
+      "Homologous evolution"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the result of genetic drift?",
+    "o": [
+      "Random change in the frequency of a gene",
+      "Directed change in the frequency of a gene",
+      "Increase in the frequency of a gene",
+      "Decrease in the frequency of a gene"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the term for the process of natural selection?",
+    "o": [
+      "Directed evolution",
+      "Random evolution",
+      "Non-random evolution",
+      "Neutral evolution"
+    ],
+    "a": 2
+  },
+  {
     "q": "What is phylogeny?",
     "o": [
       "The study of the structure of organisms",
@@ -40,3 +321,1384 @@ let questions =[
     ],
     "a": 2
   },
+  {
+    "q": "What is a phylogenetic tree?",
+    "o": [
+      "A diagram that shows the relationships between different species",
+      "A diagram that shows the evolutionary history of a species",
+      "A diagram that depicts the lines of evolutionary descent of different species, organisms, or genes from a common ancestor",
+      "A diagram that shows the characteristics of a species"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the importance of phylogeny?",
+    "o": [
+      "It helps us understand the evolution of organisms",
+      "It helps us classify organisms",
+      "It helps us understand the relationships between different groups of organisms",
+      "All of the above"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is a synapomorphy?",
+    "o": [
+      "A character state that is shared between two or more taxa due to inheritance from a common ancestor",
+      "A character state that is unique to a single taxon",
+      "A character state that is shared between two or more taxa due to convergent evolution",
+      "A character state that is not shared between two or more taxa"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is a homoplasy?",
+    "o": [
+      "A character state that is shared between two or more taxa due to inheritance from a common ancestor",
+      "A character state that is unique to a single taxon",
+      "A character state that is shared between two or more taxa due to convergent evolution",
+      "A character state that is not shared between two or more taxa"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is a clade?",
+    "o": [
+      "A group of organisms that share a common ancestor",
+      "A group of organisms that do not share a common ancestor",
+      "A piece of a phylogeny that includes an ancestral lineage and all the descendants of that ancestor",
+      "A group of organisms that are not related"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is a monophyletic group?",
+    "o": [
+      "A group of organisms that share a common ancestor and all of its descendants",
+      "A group of organisms that do not share a common ancestor",
+      "A group of organisms that share a common ancestor but not all of its descendants",
+      "A group of organisms that are not related"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is a paraphyletic group?",
+    "o": [
+      "A group of organisms that share a common ancestor and all of its descendants",
+      "A group of organisms that do not share a common ancestor",
+      "A group of organisms that share a common ancestor but not all of its descendants",
+      "A group of organisms that are not related"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is a polyphyletic group?",
+    "o": [
+      "A group of organisms that share a common ancestor and all of its descendants",
+      "A group of organisms that do not share a common ancestor",
+      "A group of organisms that share a common ancestor but not all of its descendants",
+      "A group of organisms that are not related"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is anagenesis?",
+    "o": [
+      "The accumulation of changes in one species that leads to speciation over time",
+      "The budding of one or more new species from a species that continues to exist",
+      "The evolution of a whole population",
+      "The extinction of a species"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is cladogenesis?",
+    "o": [
+      "The accumulation of changes in one species that leads to speciation over time",
+      "The budding of one or more new species from a species that continues to exist",
+      "The evolution of a whole population",
+      "The extinction of a species"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is a root in a phylogenetic tree?",
+    "o": [
+      "The ancestral population from which all the other species originate",
+      "The most recent common ancestor of all the species in the tree",
+      "The node that represents the branching point of two lineages",
+      "The terminal node of a branch"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is a node in a phylogenetic tree?",
+    "o": [
+      "The ancestral population from which all the other species originate",
+      "The most recent common ancestor of all the species in the tree",
+      "A branching point from the ancestral population",
+      "The terminal node of a branch"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is an internode in a phylogenetic tree?",
+    "o": [
+      "The line connecting two nodes",
+      "The ancestral population from which all the other species originate",
+      "The most recent common ancestor of all the species in the tree",
+      "The terminal node of a branch"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is a terminal node in a phylogenetic tree?",
+    "o": [
+      "The ancestral population from which all the other species originate",
+      "The most recent common ancestor of all the species in the tree",
+      "A branching point from the ancestral population",
+      "The end point of a branch"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is a taxon?",
+    "o": [
+      "A group of organisms that share a common ancestor",
+      "A group of organisms that do not share a common ancestor",
+      "A group of organisms that are not related",
+      "Any group of species designated by name"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is a polytomy?",
+    "o": [
+      "A node that gives rise to two lineages",
+      "A node that gives rise to more than two lineages",
+      "A node that gives rise to a single lineage",
+      "A node that does not give rise to any lineages"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the difference between a monophyletic group and a paraphyletic group?",
+    "o": [
+      "A monophyletic group includes all the descendants of a common ancestor, while a paraphyletic group does not",
+      "A monophyletic group does not include all the descendants of a common ancestor, while a paraphyletic group does",
+      "A monophyletic group is a group of organisms that share a common ancestor, while a paraphyletic group is not",
+      "A monophyletic group is a group of organisms that do not share a common ancestor, while a paraphyletic group does"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the purpose of using homologous features in constructing phylogenetic trees?",
+    "o": [
+      "To identify groups that are monophyletic",
+      "To identify groups that are paraphyletic",
+      "To identify groups that are polyphyletic",
+      "To identify groups that are not related"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the difference between anagenesis and cladogenesis?",
+    "o": [
+      "Anagenesis is the accumulation of changes in one species, while cladogenesis is the budding of one or more new species",
+      "Anagenesis is the budding of one or more new species, while cladogenesis is the accumulation of changes in one species",
+      "Anagenesis is the evolution of a whole population, while cladogenesis is the evolution of a single species",
+      "Anagenesis is the extinction of a species, while cladogenesis is the origin of a new species"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is cladistics?",
+    "o": [
+      "A method for developing phylogenetic trees",
+      "A classification system that categorizes organisms based on shared traits",
+      "A technique for analyzing DNA evidence",
+      "A theory of evolution"
+    ],
+    "a": 0
+  },
+  {
+    "q": "Who conceived the method of cladistics?",
+    "o": [
+      "Charles Darwin",
+      "Willi Hennig",
+      "Linnaeus",
+      "Mendel"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is a clade?",
+    "o": [
+      "A collection of an ancestral species and all of its descendant species",
+      "A group of organisms that share a common ancestor",
+      "A phylogenetic tree",
+      "A classification system"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is a phylogenetic tree?",
+    "o": [
+      "A diagram that shows the relationships between different species",
+      "A diagram that shows the evolutionary history of a species",
+      "A schematic diagram used as a visual illustration of proposed evolutionary relationships among taxa",
+      "A classification system"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What are the main assumptions of cladistics?",
+    "o": [
+      "All organisms descend from a common ancestor",
+      "New organisms develop when existing populations split into two groups",
+      "Over time, lineages experience changes in characteristics",
+      "All of the above"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is phylogenetic classification based on?",
+    "o": [
+      "Known evolutionary history",
+      "Shared traits",
+      "DNA evidence",
+      "Anatomical features"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is an advantage of phylogenetic classification?",
+    "o": [
+      "It is more accurate than other classification systems",
+      "It is based on known evolutionary history",
+      "It is easier to use than other classification systems",
+      "It is more complex than other classification systems"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is one application of phylogeny?",
+    "o": [
+      "Classification of new species",
+      "Forensics",
+      "Identifying the origin of pathogens",
+      "All of the above"
+    ],
+    "a": 3
+  },
+  {
+    "q": "How is phylogenetics used in forensics?",
+    "o": [
+      "To assess DNA evidence",
+      "To identify suspects",
+      "To solve crimes",
+      "To analyze DNA samples"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is one way that phylogenetics can inform conservation policy?",
+    "o": [
+      "By identifying species that are most likely to become extinct",
+      "By identifying species that are most closely related",
+      "By identifying species that are most distantly related",
+      "By identifying species that are most important to the ecosystem"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is a cladogram?",
+    "o": [
+      "A phylogenetic tree",
+      "A classification system",
+      "A diagram that shows the relationships between different species",
+      "A diagram that shows the evolutionary history of a species"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the purpose of phylogenetic trees?",
+    "o": [
+      "To show the relationships between different species",
+      "To show the evolutionary history of a species",
+      "To classify organisms",
+      "To identify species"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is a synapomorphy?",
+    "o": [
+      "A shared trait",
+      "A unique trait",
+      "A trait that is not shared",
+      "A trait that is not unique"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the difference between a phylogenetic tree and a cladogram?",
+    "o": [
+      "A phylogenetic tree shows the relationships between different species, while a cladogram shows the evolutionary history of a species",
+      "A phylogenetic tree shows the evolutionary history of a species, while a cladogram shows the relationships between different species",
+      "A phylogenetic tree is a type of cladogram",
+      "A cladogram is a type of phylogenetic tree"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the main goal of cladistics?",
+    "o": [
+      "To classify organisms",
+      "To identify species",
+      "To reconstruct evolutionary history",
+      "To analyze DNA evidence"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is one way that phylogenetics can be used in public health policy?",
+    "o": [
+      "To identify the origin of pathogens",
+      "To develop new treatments",
+      "To create vaccines",
+      "To analyze DNA evidence"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is a common ancestor?",
+    "o": [
+      "An organism that is shared by two or more species",
+      "An organism that is unique to a single species",
+      "An organism that is not shared by any species",
+      "An organism that is not unique to any species"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is a lineage?",
+    "o": [
+      "A group of organisms that share a common ancestor",
+      "A group of organisms that do not share a common ancestor",
+      "A group of organisms that are not related",
+      "A group of organisms that are closely related"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the difference between a monophyletic group and a paraphyletic group?",
+    "o": [
+      "A monophyletic group includes all the descendants of a common ancestor, while a paraphyletic group does not",
+      "A monophyletic group does not include all the descendants of a common ancestor, while a paraphyletic group does",
+      "A monophyletic group is a group of organisms that share a common ancestor, while a paraphyletic group is not",
+      "A monophyletic group is a group of organisms that do not share a common ancestor, while a paraphyletic group does"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is one way that phylogenetics can be used in conservation biology?",
+    "o": [
+      "To identify species that are most likely to become extinct",
+      "To identify species that are most closely related",
+      "To identify species that are most distantly related",
+      "To identify species that are most important to the ecosystem"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the main characteristic of the body structure of Platyhelminthes?",
+    "o": [
+      "Radial symmetry",
+      "Bilateral symmetry",
+      "Spherical symmetry",
+      "No symmetry"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the name of the phylum that includes flatworms?",
+    "o": [
+      "Platyhelminthes",
+      "Nematoda",
+      "Annelida",
+      "Cnidarian"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is unique about the digestive system of Platyhelminthes?",
+    "o": [
+      "It is complete with a mouth and anus",
+      "It is incomplete with a mouth but no anus",
+      "It is absent in all species",
+      "It is similar to that of humans"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the function of the osmoregulatory system in Platyhelminthes?",
+    "o": [
+      "To remove excess food",
+      "To remove excess water",
+      "To retain essential ions",
+      "Both B and C"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What type of nervous system do flatworms possess?",
+    "o": [
+      "Simple brain and one pair of longitudinal nerve cords",
+      "Simple brain and one to five pairs of longitudinal nerve cords",
+      "Complex brain and multiple pairs of longitudinal nerve cords",
+      "No nervous system"
+    ],
+    "a": 1
+  },
+  {
+    "q": "How do Turbellarians move?",
+    "o": [
+      "By swimming only",
+      "By creeping only",
+      "By crawling only",
+      "By swimming, creeping, or crawling"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the main characteristic of the class Trematoda?",
+    "o": [
+      "They are all free-living",
+      "They are all parasitic",
+      "They have a complete digestive system",
+      "They have no digestive system"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the function of the tegument in parasitic Platyhelminthes?",
+    "o": [
+      "To protect the parasite against its host",
+      "To absorb nutrients from the host",
+      "To produce cyst material",
+      "Both A and B"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the life cycle of flukes?",
+    "o": [
+      "Simple life cycle with one host",
+      "Complex life cycle with two hosts",
+      "Complex life cycle with multiple hosts",
+      "No life cycle"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the name of the intermediate host for flukes?",
+    "o": [
+      "Snail",
+      "Vertebrate",
+      "Human",
+      "Fish"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the name of the definitive host for flukes?",
+    "o": [
+      "Snail",
+      "Vertebrate",
+      "Human",
+      "Fish"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is unique about the reproduction of Platyhelminthes?",
+    "o": [
+      "They reproduce only asexually",
+      "They reproduce only sexually",
+      "They reproduce both asexually and sexually",
+      "They do not reproduce"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the main problem posed by endoparasitic existence?",
+    "o": [
+      "Reproducing and getting embryos out of the host",
+      "Contacting new hosts and obtaining entrance",
+      "Maintaining position in the host and avoiding the immune system",
+      "All of the above"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the name of the class that includes about 3000 species of flatworms?",
+    "o": [
+      "Turbellaria",
+      "Trematoda",
+      "Cestoda",
+      "Platyhelminthes"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the main habitat of Turbellarians?",
+    "o": [
+      "Marine and freshwater",
+      "Terrestrial and freshwater",
+      "Marine and terrestrial",
+      "Freshwater only"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the diet of most Turbellarians?",
+    "o": [
+      "Herbivores",
+      "Carnivores",
+      "Omnivores",
+      "Predators of invertebrates"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the function of the pharynx in Turbellarians?",
+    "o": [
+      "To absorb nutrients",
+      "To excrete waste",
+      "To suck in food",
+      "To produce enzymes"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the name of the excretory system in Platyhelminthes?",
+    "o": [
+      "Protonephridia",
+      "Flame cells",
+      "Nephridia",
+      "Both A and B"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the main characteristic of the nervous system of flatworms?",
+    "o": [
+      "Complex brain and multiple pairs of longitudinal nerve cords",
+      "Simple brain and one pair of longitudinal nerve cords",
+      "Simple brain and one to five pairs of longitudinal nerve cords",
+      "No nervous system"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the name of the process by which flatworms move?",
+    "o": [
+      "Ciliary movement",
+      "Muscular movement",
+      "Wave-like movement",
+      "All of the above"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is unique about the life cycle of Schistosome?",
+    "o": [
+      "It has multiple intermediate hosts",
+      "It has separate sexes",
+      "It has a complex life cycle",
+      "It has a simple life cycle"
+    ],
+    "a": 1
+  },
+  {
+    "q": "Where do adult Schistosomes live?",
+    "o": [
+      "In the liver",
+      "In the gut",
+      "In the blood vessels",
+      "In the muscles"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the disease caused by Schistosome infection?",
+    "o": [
+      "Schistosomiasis",
+      "Malaria",
+      "Tuberculosis",
+      "HIV/AIDS"
+    ],
+    "a": 0
+  },
+  {
+    "q": "How do people get infected with Schistosome?",
+    "o": [
+      "Through contaminated food",
+      "Through contaminated water",
+      "Through mosquito bites",
+      "Through contact with an infected person"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the main characteristic of the class Monogenea?",
+    "o": [
+      "They are free-living flatworms",
+      "They are parasitic flatworms",
+      "They have a single host",
+      "They have multiple hosts"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the name of the attachment organ found in Monogenea?",
+    "o": [
+      "Opistohaptor",
+      "Scolex",
+      "Proglottid",
+      "Strobila"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the main characteristic of the class Cestoda?",
+    "o": [
+      "They are free-living flatworms",
+      "They are parasitic flatworms",
+      "They have a complete digestive system",
+      "They have a simple body structure"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the name of the tapeworm that infects humans?",
+    "o": [
+      "Taenia saginata",
+      "Taenia solium",
+      "Diphyllobothrium latum",
+      "All of the above"
+    ],
+    "a": 3
+  },
+  {
+    "q": "How do tapeworms absorb nutrients?",
+    "o": [
+      "Through their digestive system",
+      "Through their tegument",
+      "Through their scolex",
+      "Through their proglottids"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the name of the reproductive unit of tapeworms?",
+    "o": [
+      "Proglottid",
+      "Scolex",
+      "Strobila",
+      "Opistohaptor"
+    ],
+    "a": 0
+  },
+  {
+    "q": "How do tapeworms reproduce?",
+    "o": [
+      "Sexually only",
+      "Asexually only",
+      "Both sexually and asexually",
+      "Not at all"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the main characteristic of the body structure of tapeworms?",
+    "o": [
+      "Long and flat",
+      "Short and round",
+      "Complex and segmented",
+      "Simple and unsegmented"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the function of the scolex in tapeworms?",
+    "o": [
+      "To absorb nutrients",
+      "To attach to the host",
+      "To reproduce",
+      "To move"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the name of the disease caused by tapeworm infection?",
+    "o": [
+      "Schistosomiasis",
+      "Tapeworm disease",
+      "Intestinal disorder",
+      "Brain disorder"
+    ],
+    "a": 1
+  },
+  {
+    "q": "How can tapeworm infection be prevented?",
+    "o": [
+      "By cooking meat properly",
+      "By avoiding contaminated water",
+      "By using mosquito nets",
+      "By taking medication"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the main habitat of Monogenea?",
+    "o": [
+      "Freshwater",
+      "Marine water",
+      "Terrestrial environment",
+      "Host organism"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the main characteristic of the class Trematoda?",
+    "o": [
+      "They are free-living flatworms",
+      "They are parasitic flatworms",
+      "They have a single host",
+      "They have multiple hosts"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the name of the intermediate host for Schistosome?",
+    "o": [
+      "Snail",
+      "Human",
+      "Fish",
+      "Mosquito"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the main characteristic of the life cycle of Schistosome?",
+    "o": [
+      "It has a single host",
+      "It has multiple hosts",
+      "It has a complex life cycle",
+      "It has a simple life cycle"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the function of the opistohaptor in Monogenea?",
+    "o": [
+      "To attach to the host",
+      "To absorb nutrients",
+      "To reproduce",
+      "To move"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the main characteristic of the body structure of Monogenea?",
+    "o": [
+      "Long and flat",
+      "Short and round",
+      "Complex and segmented",
+      "Simple and unsegmented"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the name of the disease caused by Schistosome infection?",
+    "o": [
+      "Schistosomiasis",
+      "Malaria",
+      "Tuberculosis",
+      "HIV/AIDS"
+    ],
+    "a": 0
+  },
+  {
+    "q": "How can Schistosome infection be prevented?",
+    "o": [
+      "By avoiding contaminated water",
+      "By cooking meat properly",
+      "By using mosquito nets",
+      "By taking medication"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the main habitat of Cestoda?",
+    "o": [
+      "Freshwater",
+      "Marine water",
+      "Terrestrial environment",
+      "Host organism"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the main characteristic of the class Cestoda?",
+    "o": [
+      "They are free-living flatworms",
+      "They are parasitic flatworms",
+      "They have a complete digestive system",
+      "They have a simple body structure"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the phylum of nematodes?",
+    "o": [
+      "Platyhelminthes",
+      "Nematoda",
+      "Cnidarian",
+      "Annelida"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the body shape of nematodes?",
+    "o": [
+      "Segmented and flat",
+      "Unsegmented and cylindrical",
+      "Bilaterally symmetric and flat",
+      "Radially symmetric and round"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is unique about the sex of nematodes?",
+    "o": [
+      "They are hermaphites",
+      "They are all male",
+      "They are all female",
+      "Sexes are separate"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the life cycle of nematodes?",
+    "o": [
+      "Egg, larva, adult",
+      "Egg, four larval stages, adult",
+      "Egg, pupa, adult",
+      "Egg, nymph, adult"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the function of the cuticle in nematodes?",
+    "o": [
+      "To absorb nutrients",
+      "To excrete waste",
+      "To protect the nematode",
+      "To move"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the name of the common intestinal roundworm?",
+    "o": [
+      "Ascaris lumbricoides",
+      "Necator americanus",
+      "Ancylostoma duodenale",
+      "Trichinella spiralis"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the habitat of Ascaris lumbricoides?",
+    "o": [
+      "Small intestine",
+      "Large intestine",
+      "Stomach",
+      "Liver"
+    ],
+    "a": 0
+  },
+  {
+    "q": "How is Ascaris lumbricoides transmitted?",
+    "o": [
+      "Through contaminated food",
+      "Through contaminated water",
+      "Through mosquito bites",
+      "Through contact with an infected person"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the life cycle of hookworms?",
+    "o": [
+      "Egg, larva, adult",
+      "Egg, four larval stages, adult",
+      "Egg, pupa, adult",
+      "Egg, nymph, adult"
+    ],
+    "a": 1
+  },
+  {
+    "q": "What is the name of the hookworm that infects humans?",
+    "o": [
+      "Necator americanus",
+      "Ancylostoma duodenale",
+      "Ancylostoma braziliense",
+      "All of the above"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the function of the hypodermis in nematodes?",
+    "o": [
+      "To absorb nutrients",
+      "To excrete waste",
+      "To secrete the cuticle",
+      "To move"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the name of the nematode that causes filariasis?",
+    "o": [
+      "Wuchereria bancrofti",
+      "Brugia malayi",
+      "Ascaris lumbricoides",
+      "Necator americanus"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the mode of transmission of hookworms?",
+    "o": [
+      "Through contaminated food",
+      "Through contaminated water",
+      "Through mosquito bites",
+      "Through skin contact"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the portal of entry for Ascaris lumbricoides?",
+    "o": [
+      "Mouth",
+      "Anus",
+      "Skin",
+      "Nose"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the diagnostic stage of Ascaris lumbricoides?",
+    "o": [
+      "Egg",
+      "Larva",
+      "Adult",
+      "All of the above"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the name of the nematode that causes trichinosis?",
+    "o": [
+      "Trichinella spiralis",
+      "Ascaris lumbricoides",
+      "Necator americanus",
+      "Ancylostoma duodenale"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the habitat of hookworms?",
+    "o": [
+      "Small intestine",
+      "Large intestine",
+      "Stomach",
+      "Liver"
+    ],
+    "a": 0
+  },
+  {
+    "q": "How do nematodes move?",
+    "o": [
+      "Through muscular contraction",
+      "Through ciliary movement",
+      "Through flagellar movement",
+      "Through hydrostatic skeleton"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the function of the nervous system in nematodes?",
+    "o": [
+      "To control movement",
+      "To absorb nutrients",
+      "To excrete waste",
+      "To reproduce"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the name of the nematode that causes strongyloidosis?",
+    "o": [
+      "Strongyloides stercoralis",
+      "Ascaris lumbricoides",
+      "Necator americanus",
+      "Ancylostoma duodenale"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the name of the nematode that causes elephantiasis?",
+    "o": [
+      "Wuchereria bancrofti",
+      "Brugia malayi",
+      "Ascaris lumbricoides",
+      "Necator americanus"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the mode of transmission of Ascaris lumbricoides?",
+    "o": [
+      "Through contaminated food",
+      "Through contaminated water",
+      "Through mosquito bites",
+      "Through skin contact"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the name of the hookworm that is commonly found in tropical regions?",
+    "o": [
+      "Necator americanus",
+      "Ancylostoma duodenale",
+      "Ancylostoma braziliense",
+      "Strongyloides stercoralis"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the function of the pharynx in nematodes?",
+    "o": [
+      "To absorb nutrients",
+      "To excrete waste",
+      "To pump food into the intestine",
+      "To move"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the name of the nematode that causes trichinosis?",
+    "o": [
+      "Trichinella spiralis",
+      "Ascaris lumbricoides",
+      "Necator americanus",
+      "Ancylostoma duodenale"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the habitat of Strongyloides stercoralis?",
+    "o": [
+      "Small intestine",
+      "Large intestine",
+      "Stomach",
+      "Liver"
+    ],
+    "a": 0
+  },
+  {
+    "q": "How is Strongyloides stercoralis transmitted?",
+    "o": [
+      "Through contaminated food",
+      "Through contaminated water",
+      "Through skin contact",
+      "Through mosquito bites"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the name of the nematode that causes filariasis?",
+    "o": [
+      "Wuchereria bancrofti",
+      "Brugia malayi",
+      "Ascaris lumbricoides",
+      "Necator americanus"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the function of the cuticle in nematodes?",
+    "o": [
+      "To absorb nutrients",
+      "To excrete waste",
+      "To protect the nematode",
+      "To move"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the name of the nematode that is commonly found in the large intestine?",
+    "o": [
+      "Ascaris lumbricoides",
+      "Necator americanus",
+      "Ancylostoma duodenale",
+      "Trichuris trichiura"
+    ],
+    "a": 3
+  },
+  {
+    "q": "What is the name of the nematode that causes ascariasis?",
+    "o": [
+      "Ascaris lumbricoides",
+      "Necator americanus",
+      "Ancylostoma duodenale",
+      "Trichinella spiralis"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the mode of transmission of hookworms?",
+    "o": [
+      "Through contaminated food",
+      "Through contaminated water",
+      "Through skin contact",
+      "Through mosquito bites"
+    ],
+    "a": 2
+  },
+  {
+    "q": "What is the name of the nematode that is commonly found in the small intestine?",
+    "o": [
+      "Ascaris lumbricoides",
+      "Necator americanus",
+      "Ancylostoma duodenale",
+      "Strongyloides stercoralis"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the function of the intestine in nematodes?",
+    "o": [
+      "To absorb nutrients",
+      "To excrete waste",
+      "To pump food into the pharynx",
+      "To move"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the name of the nematode that causes strongyloidosis?",
+    "o": [
+      "Strongyloides stercoralis",
+      "Ascaris lumbricoides",
+      "Necator americanus",
+      "Ancylostoma duodenale"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the habitat of Trichinella spiralis?",
+    "o": [
+      "Small intestine",
+      "Large intestine",
+      "Muscle tissue",
+      "Liver"
+    ],
+    "a": 2
+  },
+  {
+    "q": "How is Trichinella spiralis transmitted?",
+    "o": [
+      "Through contaminated food",
+      "Through contaminated water",
+      "Through skin contact",
+      "Through mosquito bites"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the name of the nematode that causes elephantiasis?",
+    "o": [
+      "Wuchereria bancrofti",
+      "Brugia malayi",
+      "Ascaris lumbricoides",
+      "Necator americanus"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the function of the nervous system in nematodes?",
+    "o": [
+      "To control movement",
+      "To absorb nutrients",
+      "To excrete waste",
+      "To reproduce"
+    ],
+    "a": 0
+  },
+  {
+    "q": "What is the name of the nematode that is commonly found in the tropics?",
+    "o": [
+      "Ascaris lumbricoides",
+      "Necator americanus",
+      "Ancylostoma duodenale",
+      "Strongyloides stercoralis"
+    ],
+    "a": 1
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+];
+
+
+
+//end
+
+
+
+/* ─────────────────────────
+    RANDOMIZE QUESTIONS
+─────────────────────────── */
+questions = questions.sort(() => Math.random() - 0.5);
+
+let currentIndex = 0;
+
+
+/* ──────────── STORE USER ANSWERS ──────────── */
+let userAnswers = {};  
+// example: userAnswers[3] = 2  → Question 3, option index 2 selected
+
+/* ─────────── DISPLAY QUESTION (with stored answers) ─────────── */
+function showQuestion() {
+    let q = questions[currentIndex];
+    let container = document.getElementById("questionContainer");
+
+    container.innerHTML = `
+        <div class="question-box">
+            <p><b>${currentIndex + 1}. ${q.q}</b></p>
+            ${q.o.map((opt, i) => `
+                <label>
+                    <input type="radio" name="q${currentIndex}"
+                        value="${i}"
+                        ${userAnswers[currentIndex] === i ? "checked" : ""}>
+                    ${opt}
+                </label><br>
+            `).join("")}
+        </div>
+    `;
+
+    // Save answer automatically when clicking
+    document.querySelectorAll(`input[name="q${currentIndex}"]`).forEach(radio => {
+        radio.addEventListener("change", function() {
+            userAnswers[currentIndex] = parseInt(this.value);
+        });
+    });
+}
+
+/* ─────────── NEXT / PREVIOUS — Keeps Answers Saved ─────────── */
+function nextQuestion() {
+    if (currentIndex < questions.length - 1) {
+        currentIndex++;
+        showQuestion();
+    }
+}
+function prevQuestion() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        showQuestion();
+    }
+}
+
+/* ─────────── SUBMIT: Score Only Based on Answered Questions ─────────── */
+function submitQuiz() {
+    let score = 0;
+    let answeredQuestions = Object.keys(userAnswers).length;
+    let details = "";
+
+    for (let index in userAnswers) {
+        index = parseInt(index);
+        let q = questions[index];
+        let userAnswer = userAnswers[index];
+
+        if (userAnswer === q.a) score++;
+
+        details += `
+            <p>
+                <b>${index + 1}. ${q.q}</b><br>
+                <span class="${userAnswer === q.a ? 'correct-answer' : 'incorrect-answer'}">
+                    Your answer: ${q.o[userAnswer]}
+                </span><br>
+                <span class="correct-answer">Correct answer: ${q.o[q.a]}</span>
+            </p><hr>
+        `;
+    }
+
+    if (answeredQuestions === 0) {
+        details = "<p>You did not answer any question.</p>";
+    }
+
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").innerHTML = `
+        <h2>Answered: ${answeredQuestions} / ${questions.length}</h2>
+        <h2>Your Score: ${score}</h2><br>
+        ${details}
+    `;
+}
+
+/* ─────────── TIMER (unchanged) ─────────── */
+let timeLeft = 90 * 60;
+function countdown() {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    document.getElementById("time").innerHTML =
+        `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+
+    if (timeLeft <= 0) {
+        submitQuiz();
+        document.getElementById("timer").style.background = "red";
+        return;
+    }
+    timeLeft--;
+    setTimeout(countdown, 1000);
+}
+countdown();
+
+/* ─────────── SHOW FIRST QUESTION ─────────── */
+showQuestion();
+
+
+</script>
+
+</body>
+</html>
+
